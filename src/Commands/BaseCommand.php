@@ -50,4 +50,25 @@ class BaseCommand
             'name' => $entity['name'],
         ], $entities);
     }
+
+    /**
+     * sort the Results
+     * @param array $data
+     * @param string|null $attribute
+     * @param string $order
+     * @return array
+     */
+    protected function sortResults(array $data, ?string $attribute, string $order = 'ASC'): array
+    {
+        usort($data, static function ($a, $b) use ($attribute, $order) {
+            if (!isset($attribute, $a[$attribute], $b[$attribute])) {
+                return 0;
+            }
+            return ($order === 'ASC')
+                ? strcmp($a[$attribute], $b[$attribute])
+                : strcmp($b[$attribute], $a[$attribute]);
+        });
+
+        return $data;
+    }
 }
