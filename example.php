@@ -11,7 +11,7 @@ $client = new PayPlanClient();
 // physician:
 $physicianCmd = new PhysicianCommands($client);
 // Example 1:
-$physicians = $physicianCmd->listAllPhysicians("1", "name", "ASC");
+$physicians = $physicianCmd->listAllPhysicians("1", "ASC", "name");
 print_r($physicians);
 
 // Example 2:
@@ -22,7 +22,7 @@ print_r($physiciansInSpecialty);
 //specialties:
 $specialtyCmd = new SpecialtyCommands($client);
 // Example 3:
-$specialties = $specialtyCmd->listAllSpecialties("2", "name", "DESC");
+$specialties = $specialtyCmd->listAllSpecialties("2", "DESC", "name");
 print_r($specialties);
 
 // Example 4:
